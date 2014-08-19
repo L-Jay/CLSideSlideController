@@ -13,4 +13,12 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+#import "CLSideSlideController.h"
 #endif
+
+#define BARBUTTON(title, select) [[[UIBarButtonItem alloc] initWithTitle: title style: UIBarButtonItemStyleBordered target: self action: select] autorelease]
+#define BARBUTTONSYS(style, select) [[[UIBarButtonItem alloc] initWithBarButtonSystemItem: style target: self action: select] autorelease]
+#define BARBUTTONIMG(imgName, select) [[[UIBarButtonItem alloc] initWithImage:[UIImage pngImageNamed:imgName] style:UIBarButtonItemStyleBordered target:self action:select] autorelease]
+#define BArBUTTONCUSTOM(view) [[[UIBarButtonItem alloc] initWithCustomView: view] autorelease]
+
+#define ARCCOLOR [UIColor colorWithRed:arc4random()%10*0.1 green:arc4random()%10*0.1 blue:arc4random()%10*0.1 alpha:1.0]

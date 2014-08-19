@@ -19,6 +19,21 @@
 		8C7CDBA519A3366000BBFD16 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C7CDB8D19A3366000BBFD16 /* UIKit.framework */; };
 		8C7CDBAD19A3366000BBFD16 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8C7CDBAB19A3366000BBFD16 /* InfoPlist.strings */; };
 		8C7CDBAF19A3366000BBFD16 /* CLSideSlideControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7CDBAE19A3366000BBFD16 /* CLSideSlideControllerTests.m */; };
+		8C7CDBD619A33A3F00BBFD16 /* CLSideSlideController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7CDBB919A33A3F00BBFD16 /* CLSideSlideController.m */; };
+		8C7CDBD719A33A3F00BBFD16 /* CLSideSlideUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7CDBBB19A33A3F00BBFD16 /* CLSideSlideUtils.m */; };
+		8C7CDBD819A33A3F00BBFD16 /* LeftTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7CDBBD19A33A3F00BBFD16 /* LeftTableViewController.m */; };
+		8C7CDBD919A33A3F00BBFD16 /* RightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7CDBBF19A33A3F00BBFD16 /* RightViewController.m */; };
+		8C7CDBDA19A33A3F00BBFD16 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7CDBC119A33A3F00BBFD16 /* FirstViewController.m */; };
+		8C7CDBDB19A33A3F00BBFD16 /* SecondTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7CDBC319A33A3F00BBFD16 /* SecondTableViewController.m */; };
+		8C7CDBDC19A33A3F00BBFD16 /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7CDBC519A33A3F00BBFD16 /* ThirdViewController.m */; };
+		8C7CDBDD19A33A3F00BBFD16 /* FourViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7CDBC719A33A3F00BBFD16 /* FourViewController.m */; };
+		8C7CDBDE19A33A3F00BBFD16 /* FiveTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7CDBC919A33A3F00BBFD16 /* FiveTableViewController.m */; };
+		8C7CDBDF19A33A3F00BBFD16 /* SixViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7CDBCB19A33A3F00BBFD16 /* SixViewController.m */; };
+		8C7CDBE019A33A3F00BBFD16 /* SevenTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7CDBCD19A33A3F00BBFD16 /* SevenTableViewController.m */; };
+		8C7CDBE119A33A3F00BBFD16 /* EightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7CDBCF19A33A3F00BBFD16 /* EightViewController.m */; };
+		8C7CDBE219A33A3F00BBFD16 /* NineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7CDBD119A33A3F00BBFD16 /* NineTableViewController.m */; };
+		8C7CDBE319A33A3F00BBFD16 /* TenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7CDBD319A33A3F00BBFD16 /* TenViewController.m */; };
+		8C7CDBE419A33A3F00BBFD16 /* NextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7CDBD519A33A3F00BBFD16 /* NextViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +63,36 @@
 		8C7CDBAA19A3366000BBFD16 /* CLSideSlideControllerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CLSideSlideControllerTests-Info.plist"; sourceTree = "<group>"; };
 		8C7CDBAC19A3366000BBFD16 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8C7CDBAE19A3366000BBFD16 /* CLSideSlideControllerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLSideSlideControllerTests.m; sourceTree = "<group>"; };
+		8C7CDBB819A33A3F00BBFD16 /* CLSideSlideController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLSideSlideController.h; sourceTree = "<group>"; };
+		8C7CDBB919A33A3F00BBFD16 /* CLSideSlideController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLSideSlideController.m; sourceTree = "<group>"; };
+		8C7CDBBA19A33A3F00BBFD16 /* CLSideSlideUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLSideSlideUtils.h; sourceTree = "<group>"; };
+		8C7CDBBB19A33A3F00BBFD16 /* CLSideSlideUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLSideSlideUtils.m; sourceTree = "<group>"; };
+		8C7CDBBC19A33A3F00BBFD16 /* LeftTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftTableViewController.h; sourceTree = "<group>"; };
+		8C7CDBBD19A33A3F00BBFD16 /* LeftTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftTableViewController.m; sourceTree = "<group>"; };
+		8C7CDBBE19A33A3F00BBFD16 /* RightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightViewController.h; sourceTree = "<group>"; };
+		8C7CDBBF19A33A3F00BBFD16 /* RightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightViewController.m; sourceTree = "<group>"; };
+		8C7CDBC019A33A3F00BBFD16 /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
+		8C7CDBC119A33A3F00BBFD16 /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		8C7CDBC219A33A3F00BBFD16 /* SecondTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondTableViewController.h; sourceTree = "<group>"; };
+		8C7CDBC319A33A3F00BBFD16 /* SecondTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondTableViewController.m; sourceTree = "<group>"; };
+		8C7CDBC419A33A3F00BBFD16 /* ThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdViewController.h; sourceTree = "<group>"; };
+		8C7CDBC519A33A3F00BBFD16 /* ThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
+		8C7CDBC619A33A3F00BBFD16 /* FourViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FourViewController.h; sourceTree = "<group>"; };
+		8C7CDBC719A33A3F00BBFD16 /* FourViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FourViewController.m; sourceTree = "<group>"; };
+		8C7CDBC819A33A3F00BBFD16 /* FiveTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FiveTableViewController.h; sourceTree = "<group>"; };
+		8C7CDBC919A33A3F00BBFD16 /* FiveTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FiveTableViewController.m; sourceTree = "<group>"; };
+		8C7CDBCA19A33A3F00BBFD16 /* SixViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SixViewController.h; sourceTree = "<group>"; };
+		8C7CDBCB19A33A3F00BBFD16 /* SixViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SixViewController.m; sourceTree = "<group>"; };
+		8C7CDBCC19A33A3F00BBFD16 /* SevenTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SevenTableViewController.h; sourceTree = "<group>"; };
+		8C7CDBCD19A33A3F00BBFD16 /* SevenTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SevenTableViewController.m; sourceTree = "<group>"; };
+		8C7CDBCE19A33A3F00BBFD16 /* EightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EightViewController.h; sourceTree = "<group>"; };
+		8C7CDBCF19A33A3F00BBFD16 /* EightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EightViewController.m; sourceTree = "<group>"; };
+		8C7CDBD019A33A3F00BBFD16 /* NineTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NineTableViewController.h; sourceTree = "<group>"; };
+		8C7CDBD119A33A3F00BBFD16 /* NineTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NineTableViewController.m; sourceTree = "<group>"; };
+		8C7CDBD219A33A3F00BBFD16 /* TenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TenViewController.h; sourceTree = "<group>"; };
+		8C7CDBD319A33A3F00BBFD16 /* TenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TenViewController.m; sourceTree = "<group>"; };
+		8C7CDBD419A33A3F00BBFD16 /* NextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NextViewController.h; sourceTree = "<group>"; };
+		8C7CDBD519A33A3F00BBFD16 /* NextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NextViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +154,36 @@
 			children = (
 				8C7CDB9819A3366000BBFD16 /* AppDelegate.h */,
 				8C7CDB9919A3366000BBFD16 /* AppDelegate.m */,
+				8C7CDBB819A33A3F00BBFD16 /* CLSideSlideController.h */,
+				8C7CDBB919A33A3F00BBFD16 /* CLSideSlideController.m */,
+				8C7CDBBA19A33A3F00BBFD16 /* CLSideSlideUtils.h */,
+				8C7CDBBB19A33A3F00BBFD16 /* CLSideSlideUtils.m */,
+				8C7CDBBC19A33A3F00BBFD16 /* LeftTableViewController.h */,
+				8C7CDBBD19A33A3F00BBFD16 /* LeftTableViewController.m */,
+				8C7CDBBE19A33A3F00BBFD16 /* RightViewController.h */,
+				8C7CDBBF19A33A3F00BBFD16 /* RightViewController.m */,
+				8C7CDBC019A33A3F00BBFD16 /* FirstViewController.h */,
+				8C7CDBC119A33A3F00BBFD16 /* FirstViewController.m */,
+				8C7CDBC219A33A3F00BBFD16 /* SecondTableViewController.h */,
+				8C7CDBC319A33A3F00BBFD16 /* SecondTableViewController.m */,
+				8C7CDBC419A33A3F00BBFD16 /* ThirdViewController.h */,
+				8C7CDBC519A33A3F00BBFD16 /* ThirdViewController.m */,
+				8C7CDBC619A33A3F00BBFD16 /* FourViewController.h */,
+				8C7CDBC719A33A3F00BBFD16 /* FourViewController.m */,
+				8C7CDBC819A33A3F00BBFD16 /* FiveTableViewController.h */,
+				8C7CDBC919A33A3F00BBFD16 /* FiveTableViewController.m */,
+				8C7CDBCA19A33A3F00BBFD16 /* SixViewController.h */,
+				8C7CDBCB19A33A3F00BBFD16 /* SixViewController.m */,
+				8C7CDBCC19A33A3F00BBFD16 /* SevenTableViewController.h */,
+				8C7CDBCD19A33A3F00BBFD16 /* SevenTableViewController.m */,
+				8C7CDBCE19A33A3F00BBFD16 /* EightViewController.h */,
+				8C7CDBCF19A33A3F00BBFD16 /* EightViewController.m */,
+				8C7CDBD019A33A3F00BBFD16 /* NineTableViewController.h */,
+				8C7CDBD119A33A3F00BBFD16 /* NineTableViewController.m */,
+				8C7CDBD219A33A3F00BBFD16 /* TenViewController.h */,
+				8C7CDBD319A33A3F00BBFD16 /* TenViewController.m */,
+				8C7CDBD419A33A3F00BBFD16 /* NextViewController.h */,
+				8C7CDBD519A33A3F00BBFD16 /* NextViewController.m */,
 				8C7CDB9B19A3366000BBFD16 /* Images.xcassets */,
 				8C7CDB9019A3366000BBFD16 /* Supporting Files */,
 			);
@@ -240,7 +315,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C7CDB9A19A3366000BBFD16 /* AppDelegate.m in Sources */,
+				8C7CDBDF19A33A3F00BBFD16 /* SixViewController.m in Sources */,
+				8C7CDBE119A33A3F00BBFD16 /* EightViewController.m in Sources */,
+				8C7CDBDB19A33A3F00BBFD16 /* SecondTableViewController.m in Sources */,
+				8C7CDBE319A33A3F00BBFD16 /* TenViewController.m in Sources */,
+				8C7CDBDD19A33A3F00BBFD16 /* FourViewController.m in Sources */,
+				8C7CDBD819A33A3F00BBFD16 /* LeftTableViewController.m in Sources */,
+				8C7CDBE019A33A3F00BBFD16 /* SevenTableViewController.m in Sources */,
+				8C7CDBDA19A33A3F00BBFD16 /* FirstViewController.m in Sources */,
+				8C7CDBD619A33A3F00BBFD16 /* CLSideSlideController.m in Sources */,
+				8C7CDBDC19A33A3F00BBFD16 /* ThirdViewController.m in Sources */,
+				8C7CDBE419A33A3F00BBFD16 /* NextViewController.m in Sources */,
+				8C7CDBD719A33A3F00BBFD16 /* CLSideSlideUtils.m in Sources */,
 				8C7CDB9619A3366000BBFD16 /* main.m in Sources */,
+				8C7CDBD919A33A3F00BBFD16 /* RightViewController.m in Sources */,
+				8C7CDBDE19A33A3F00BBFD16 /* FiveTableViewController.m in Sources */,
+				8C7CDBE219A33A3F00BBFD16 /* NineTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,7 +380,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -315,7 +405,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -329,7 +419,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -348,7 +438,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -357,11 +447,13 @@
 		8C7CDBB319A3366000BBFD16 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CLSideSlideController/CLSideSlideController-Prefix.pch";
 				INFOPLIST_FILE = "CLSideSlideController/CLSideSlideController-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -370,11 +462,13 @@
 		8C7CDBB419A3366000BBFD16 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CLSideSlideController/CLSideSlideController-Prefix.pch";
 				INFOPLIST_FILE = "CLSideSlideController/CLSideSlideController-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
