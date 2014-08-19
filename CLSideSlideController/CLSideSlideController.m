@@ -196,8 +196,8 @@
                 self.shouldReAddView = NO;
             
             //=================
-            if ([self.delegate respondsToSelector:@selector(willShowLeftViewController:)])
-                [self.delegate willShowLeftViewController:moveDistance >= 0];
+            if ([self.delegate respondsToSelector:@selector(sideSlideController:willShowLeftViewController:)])
+                [self.delegate sideSlideController:self willShowLeftViewController:moveDistance >= 0];
             
             
             //=================
@@ -227,15 +227,15 @@
         }else if (self.isShowLeftView && !self.isShowRightView) {
             //=================
             if (moveDistance < 0) {
-                if ([self.delegate respondsToSelector:@selector(willHideLeftViewController:)])
-                    [self.delegate willHideLeftViewController:YES];
+                if ([self.delegate respondsToSelector:@selector(sideSlideController:willHideLeftViewController:)])
+                    [self.delegate sideSlideController:self willHideLeftViewController:YES];
             }
             
         }else if (!self.isShowLeftView && self.isShowRightView) {
             //=================
             if (moveDistance > 0) {
-                if ([self.delegate respondsToSelector:@selector(willHideLeftViewController:)])
-                    [self.delegate willHideLeftViewController:NO];
+                if ([self.delegate respondsToSelector:@selector(sideSlideController:willHideLeftViewController:)])
+                    [self.delegate sideSlideController:self willHideLeftViewController:NO];
             }
         }
     }else if (panGesture.state == UIGestureRecognizerStateChanged) {
@@ -364,8 +364,8 @@
         //=================
         if (self.mainController.view.ssMinX > self.leftViewWidth*0.5 && self.mainController.view.ssMaxX > self.view.ssWidth) {
             //=================
-            if ([self.delegate respondsToSelector:@selector(willShowLeftViewController:)])
-                [self.delegate willShowLeftViewController:YES];
+            if ([self.delegate respondsToSelector:@selector(sideSlideController:willShowLeftViewController:)])
+                [self.delegate sideSlideController:self willShowLeftViewController:YES];
             
             
             //=================
@@ -396,13 +396,13 @@
                 self.leftAnimation = YES;
                 
                 //=================
-                if ([self.delegate respondsToSelector:@selector(didShowLeftViewController:)])
-                    [self.delegate didShowLeftViewController:YES];
+                if ([self.delegate respondsToSelector:@selector(sideSlideController:didShowLeftViewController:)])
+                    [self.delegate sideSlideController:self didShowLeftViewController:YES];
             }];
         }else if (self.mainController.view.ssMaxX < self.view.ssWidth - self.rightViewWidth*0.5 && self.mainController.view.ssMinX < 0) {
             //=================
-            if ([self.delegate respondsToSelector:@selector(willShowLeftViewController:)])
-                [self.delegate willShowLeftViewController:NO];
+            if ([self.delegate respondsToSelector:@selector(sideSlideController:willShowLeftViewController:)])
+                [self.delegate sideSlideController:self willShowLeftViewController:NO];
             
             
             //=================
@@ -433,8 +433,8 @@
                 self.rightAnimation = YES;
                 
                 //=================
-                if ([self.delegate respondsToSelector:@selector(didShowLeftViewController:)])
-                    [self.delegate didShowLeftViewController:NO];
+                if ([self.delegate respondsToSelector:@selector(sideSlideController:didShowLeftViewController:)])
+                    [self.delegate sideSlideController:self didShowLeftViewController:NO];
             }];
         }else {
             [UIView animateWithDuration:0.2 animations:^{
@@ -461,15 +461,15 @@
                 
                 self.mainController.view.ssMinX = 0;
             }completion:^(BOOL finish){
-                if ([self.delegate respondsToSelector:@selector(didHideLeftViewController:)]) {
+                if ([self.delegate respondsToSelector:@selector(sideSlideController:didHideLeftViewController:)]) {
                     if (self.isShowLeftView && !self.isShowRightView)
-                        [self.delegate didHideLeftViewController:YES];
+                        [self.delegate sideSlideController:self didHideLeftViewController:YES];
                     else if (!self.isShowLeftView && self.isShowRightView)
-                        [self.delegate didHideLeftViewController:NO];
+                        [self.delegate sideSlideController:self didHideLeftViewController:NO];
                 }
                 
-                if ([self.delegate respondsToSelector:@selector(didShowRootViewController)])
-                    [self.delegate didShowRootViewController];
+                if ([self.delegate respondsToSelector:@selector(didShowRootViewControllerForSideSlideController:)])
+                    [self.delegate didShowRootViewControllerForSideSlideController:self];
                 
                 
                 _isShowLeftView = NO;
@@ -751,8 +751,8 @@
     if (!self.canShowLeft)
         return;
     
-    if ([self.delegate respondsToSelector:@selector(willShowLeftViewController:)])
-        [self.delegate willShowLeftViewController:YES];
+    if ([self.delegate respondsToSelector:@selector(sideSlideController:willShowLeftViewController:)])
+        [self.delegate sideSlideController:self willShowLeftViewController:YES];
     
     [self.view endEditing:YES];
     
@@ -766,8 +766,8 @@
     if (!self.canShowRight)
         return;
     
-    if ([self.delegate respondsToSelector:@selector(willShowLeftViewController:)])
-        [self.delegate willShowLeftViewController:NO];
+    if ([self.delegate respondsToSelector:@selector(sideSlideController:willShowLeftViewController:)])
+        [self.delegate sideSlideController:self willShowLeftViewController:NO];
     
     [self.view endEditing:YES];
     
@@ -778,16 +778,16 @@
 
 - (void)hideLeftViewWithAnimation:(BOOL)animation
 {
-    if ([self.delegate respondsToSelector:@selector(willHideLeftViewController:)])
-        [self.delegate willHideLeftViewController:YES];
+    if ([self.delegate respondsToSelector:@selector(sideSlideController:willHideLeftViewController:)])
+        [self.delegate sideSlideController:self willHideLeftViewController:YES];
     
     [self showViewIsLeft:YES isShow:NO animation:animation];
 }
 
 - (void)hideRightViewWithAnimation:(BOOL)animation
 {
-    if ([self.delegate respondsToSelector:@selector(willHideLeftViewController:)])
-        [self.delegate willHideLeftViewController:NO];
+    if ([self.delegate respondsToSelector:@selector(sideSlideController:willHideLeftViewController:)])
+        [self.delegate sideSlideController:self willHideLeftViewController:NO];
     
     [self showViewIsLeft:NO isShow:NO animation:animation];
 }
@@ -929,11 +929,11 @@
     
     //=================
     if (self.is3DRotate) {
-        if ([self.delegate respondsToSelector:@selector(willRecoverMainView)])
-            [self.delegate willRecoverMainView];
+        if ([self.delegate respondsToSelector:@selector(willRecoverMainViewForSideSlideController:)])
+            [self.delegate willRecoverMainViewForSideSlideController:self];
     }else {
-        if ([self.delegate respondsToSelector:@selector(willRotateSacleMianView)])
-            [self.delegate willRotateSacleMianView];
+        if ([self.delegate respondsToSelector:@selector(willRotateSacleMianViewForSideSlideController:)])
+            [self.delegate willRotateSacleMianViewForSideSlideController:self];
     }
     
     //=================
@@ -957,11 +957,11 @@
             
             //=================
             if (self.is3DRotate) {
-                if ([self.delegate respondsToSelector:@selector(didRotateScaleMainView)])
-                    [self.delegate didRotateScaleMainView];
+                if ([self.delegate respondsToSelector:@selector(didRotateScaleMainViewForSideSlideController:)])
+                    [self.delegate didRotateScaleMainViewForSideSlideController:self];
             }else {
-                if ([self.delegate respondsToSelector:@selector(didRecoverMainView)])
-                    [self.delegate didRecoverMainView];
+                if ([self.delegate respondsToSelector:@selector(didRecoverMainViewForSideSlideController:)])
+                    [self.delegate didRecoverMainViewForSideSlideController:self];
             }
         }];
     }];
@@ -1148,15 +1148,15 @@
     
     //=================
     if (isShow) {
-        if ([self.delegate respondsToSelector:@selector(didShowLeftViewController:)])
-            [self.delegate didShowLeftViewController:isLeft];
+        if ([self.delegate respondsToSelector:@selector(sideSlideController:didShowLeftViewController:)])
+            [self.delegate sideSlideController:self didShowLeftViewController:isLeft];
     }else {
-        if ([self.delegate respondsToSelector:@selector(didHideLeftViewController:)]) {
-            [self.delegate didHideLeftViewController:isLeft];
+        if ([self.delegate respondsToSelector:@selector(sideSlideController:didHideLeftViewController:)]) {
+            [self.delegate sideSlideController:self didHideLeftViewController:isLeft];
         }
         
-        if ([self.delegate respondsToSelector:@selector(didShowRootViewController)]) {
-            [self.delegate didShowRootViewController];
+        if ([self.delegate respondsToSelector:@selector(didShowRootViewControllerForSideSlideController:)]) {
+            [self.delegate didShowRootViewControllerForSideSlideController:self];
         }
     }
 }
@@ -1310,14 +1310,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    if (self.isShowRightView && self.animationType == CLSideSlideShowViewAnimationParallax) {
-        NSLog(@"----");
-        
-        //self.mainController.view.ssMaxX = self.view.ssWidth - self.rightViewWidth;
-//        [self hideRightViewWithAnimation:NO];
-//        [self showRightViewWithAnimation:NO];
-    }
 }
 
 - (void)viewDidAppear:(BOOL)animated

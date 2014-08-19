@@ -14,42 +14,38 @@
 
 @implementation NextViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+	
+    self.navigationItem.leftBarButtonItem = BARBUTTON(@"back", @selector(goBack));
+    
+    UIButton *v1 = [[UIButton alloc] initWithFrame: CGRectMake(260, 90, 60, 60)];
+    v1.backgroundColor = [UIColor blackColor];
+    [v1 addTarget:self action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:v1];
+}
+
+- (void)goBack
+{
+    NSLog(@"-=-=-=-=-=%@", self.sideSlideController);
+    
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
     [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
-    
-    
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
-    
-    [self.sideSlideController showRightViewWithAnimation:NO];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
 - (void)didReceiveMemoryWarning

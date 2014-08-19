@@ -173,6 +173,67 @@
     return YES;
 }
 
+- (void)sideSlideController:(CLSideSlideController *)sideSlideController willShowLeftViewController:(BOOL)isLeft
+{
+    NSLog(@"将要显示=== %@", sideSlideController);
+    if (isLeft) {
+        NSLog(@"将要显示左视图");
+    }else
+        NSLog(@"将要显示右视图");
+}
+
+- (void)sideSlideController:(CLSideSlideController *)sideSlideController didShowLeftViewController:(BOOL)isLeft
+{
+    NSLog(@"已经显示=== %@", sideSlideController);
+    if (isLeft) {
+        NSLog(@"已经显示左视图");
+    }else
+        NSLog(@"已经显示右视图");
+}
+
+- (void)sideSlideController:(CLSideSlideController *)sideSlideController willHideLeftViewController:(BOOL)isLeft
+{
+    NSLog(@"将要隐藏=== %@", sideSlideController);
+    if (isLeft) {
+        NSLog(@"将要隐藏左视图");
+    }else
+        NSLog(@"将要隐藏右视图");
+}
+
+- (void)sideSlideController:(CLSideSlideController *)sideSlideController didHideLeftViewController:(BOOL)isLeft
+{
+    NSLog(@"已经隐藏=== %@", sideSlideController);
+    if (isLeft) {
+        NSLog(@"已经隐藏左视图");
+    }else
+        NSLog(@"已经隐藏右视图");
+}
+
+- (void)didShowRootViewControllerForSideSlideController:(CLSideSlideController *)sideSlideController
+{
+    NSLog(@"已经显示主视图------- %@", sideSlideController);
+}
+
+- (void)willRotateSacleMianViewForSideSlideController:(CLSideSlideController *)sideSlideController
+{
+    NSLog(@"将要旋转缩放主视图++++++++ %@", sideSlideController);
+}
+
+- (void)didRotateScaleMainViewForSideSlideController:(CLSideSlideController *)sideSlideController
+{
+    NSLog(@"已经旋转缩放主视图++++++++ %@", sideSlideController);
+}
+
+- (void)willRecoverMainViewForSideSlideController:(CLSideSlideController *)sideSlideController
+{
+    NSLog(@"将要旋转放大主视图++++++++ %@", sideSlideController);
+}
+
+- (void)didRecoverMainViewForSideSlideController:(CLSideSlideController *)sideSlideController
+{
+    NSLog(@"已经旋转放大主视图++++++++ %@", sideSlideController);
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

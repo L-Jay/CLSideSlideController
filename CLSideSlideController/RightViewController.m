@@ -49,7 +49,16 @@
 
 - (void)hide
 {
-    [self.sideSlideController hideRightViewWithAnimation:YES];
+    //[self.sideSlideController hideRightViewWithAnimation:YES];
+    
+    NextViewController *vc = [[NextViewController alloc] init];
+    //UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+    vc.view.backgroundColor = [UIColor redColor];
+    [self.sideSlideController presentViewController:vc animated:YES completion:^{
+        
+    }];
+    [vc release];
+    //[nav release];
 }
 
 - (void)test

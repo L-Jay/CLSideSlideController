@@ -41,7 +41,7 @@
 
 - (void)test
 {
-    //[self.sideSlidController rotateScaleMainView];
+    [self.sideSlideController rotateScaleMainView];
     //self.sideSlidController.animationType = SideSlidShowViewAnimationScale;
     
 //    UIView *v = [[UIView alloc] initWithFrame:self.view.bounds];
@@ -50,18 +50,18 @@
 //    [self.sideSlidController.view addSubview:v];
 //    [v release];
     
-    UIViewController *cont = [[UIViewController alloc] init];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:cont];
-    cont.view.backgroundColor = [UIColor orangeColor];
-    
-    UIButton *v1 = [[UIButton alloc] initWithFrame: CGRectMake(260, 90, 60, 60)];
-    v1.backgroundColor = [UIColor blackColor];
-    [v1 addTarget:self action:@selector(test2) forControlEvents:UIControlEventTouchUpInside];
-    [cont.view addSubview:v1];
-    [self.sideSlideController presentViewController:nav animated:YES completion:^{
-        
-    }];
-    [cont release];
+//    UIViewController *cont = [[UIViewController alloc] init];
+//    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:cont];
+//    cont.view.backgroundColor = [UIColor orangeColor];
+//    
+//    UIButton *v1 = [[UIButton alloc] initWithFrame: CGRectMake(260, 90, 60, 60)];
+//    v1.backgroundColor = [UIColor blackColor];
+//    [v1 addTarget:self action:@selector(test2) forControlEvents:UIControlEventTouchUpInside];
+//    [cont.view addSubview:v1];
+//    [self.sideSlideController presentViewController:nav animated:YES completion:^{
+//        
+//    }];
+//    [cont release];
 }
 
 - (void)test2

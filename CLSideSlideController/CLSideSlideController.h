@@ -299,53 +299,53 @@ typedef enum{
  *
  *	@param 	isLeft 	BOOL型,为YES,为左视图,反之为右视图.
  */
-- (void)willShowLeftViewController:(BOOL)isLeft;
+- (void)sideSlideController:(CLSideSlideController *)sideSlideController willShowLeftViewController:(BOOL)isLeft;
 
 /**
  *	@brief	已经弹出左/右视图.
  *
  *	@param 	isLeft 	BOOL型,为YES,为左视图,反之为右视图.
  */
-- (void)didShowLeftViewController:(BOOL)isLeft;
+- (void)sideSlideController:(CLSideSlideController *)sideSlideController didShowLeftViewController:(BOOL)isLeft;
 
 /**
  *	@brief	将要隐藏左/右视图.
  *
  *	@param 	isLeft 	BOOL型,为YES,为左视图,反之为右视图.
  */
-- (void)willHideLeftViewController:(BOOL)isLeft;
+- (void)sideSlideController:(CLSideSlideController *)sideSlideController willHideLeftViewController:(BOOL)isLeft;
 
 /**
  *	@brief	已经隐藏左/右视图.
  *
  *	@param 	isLeft 	BOOL型,为YES,为左视图,反之为右视图.
  */
-- (void)didHideLeftViewController:(BOOL)isLeft;
+- (void)sideSlideController:(CLSideSlideController *)sideSlideController didHideLeftViewController:(BOOL)isLeft;
 
 /**
  *	@brief	已经显示主视图.
  */
-- (void)didShowRootViewController;
+- (void)didShowRootViewControllerForSideSlideController:(CLSideSlideController *)sideSlideController;
 
 /**
  *	@brief	将要旋转缩放主视图.
  */
-- (void)willRotateSacleMianView;
+- (void)willRotateSacleMianViewForSideSlideController:(CLSideSlideController *)sideSlideController;
 
 /**
  *	@brief	已经旋转缩放主视图.
  */
-- (void)didRotateScaleMainView;
+- (void)didRotateScaleMainViewForSideSlideController:(CLSideSlideController *)sideSlideController;
 
 /**
  *	@brief	将要复原主视图.
  */
-- (void)willRecoverMainView;
+- (void)willRecoverMainViewForSideSlideController:(CLSideSlideController *)sideSlideController;
 
 /**
  *	@brief	已经复原主视图.
  */
-- (void)didRecoverMainView;
+- (void)didRecoverMainViewForSideSlideController:(CLSideSlideController *)sideSlideController;
 
 @end
 
