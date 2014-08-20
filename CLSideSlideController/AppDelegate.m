@@ -132,10 +132,10 @@
     //    tabbar.rightViewFillScreen = NO;
     
     //tabbar.animationType = CLSideSlideShowViewAnimationNormal;
-    //tabbar.animationType = CLSideSlideShowViewAnimationScaleBig;
+    tabbar.animationType = CLSideSlideShowViewAnimationScaleBig;
     //tabbar.animationType = CLSideSlideShowViewAnimationScaleSmall;
     //tabbar.animationType = CLSideSlideShowViewAnimationDithering;
-    tabbar.animationType = CLSideSlideShowViewAnimationFor7;
+    //tabbar.animationType = CLSideSlideShowViewAnimationFor7;
     //tabbar.animationType = CLSideSlideShowViewAnimationParallax;
     
     //    tabbar.showMianViewShadow = NO;

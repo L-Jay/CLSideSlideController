@@ -209,16 +209,18 @@
             
             //=================
             switch (self.animationType) {
-                case CLSideSlideShowViewAnimationScaleBig: {
-                    
+                case CLSideSlideShowViewAnimationScaleBig:
+                case CLSideSlideShowViewAnimationScaleSmall:
+                {
                     if (self.scrollContinuous) {
                         [self.view insertSubview:self.leftViewController.view belowSubview:self.mainController.view];
                         [self.view insertSubview:self.rightViewController.view belowSubview:self.mainController.view];
                     }else {
                         [self.view insertSubview:tempView belowSubview:self.mainController.view];
                     }
-                                        
-                    tempView.transform = CGAffineTransformMakeScale(0.88, 0.88);
+                    
+                    CGFloat scale = self.animationType == CLSideSlideShowViewAnimationScaleBig ? 0.88 : 1.12;
+                    tempView.transform = CGAffineTransformMakeScale(scale, scale);
                 }
                     break;
                 default:
@@ -324,6 +326,16 @@
                 }
             }
                 break;
+            case CLSideSlideShowViewAnimationScaleSmall: {
+                if (self.mainController.view.ssMinX >= 0 && self.mainController.view.ssMinX <= self.leftViewWidth) {
+                    CGFloat scale = 1.12 - self.mainController.view.ssMinX / self.leftViewWidth * 0.12;
+                    self.leftViewController.view.transform = CGAffineTransformMakeScale(scale, scale);
+                }else if (self.mainController.view.ssMaxX >= self.view.ssWidth - self.rightViewWidth && self.mainController.view.ssMaxX <= self.view.ssWidth) {
+                    CGFloat scale = 1.12 - (self.view.ssWidth - self.mainController.view.ssMaxX) / self.rightViewWidth *0.12;
+                    self.rightViewController.view.transform = CGAffineTransformMakeScale(scale, scale);
+                }
+            }
+                break;
             case CLSideSlideShowViewAnimationFor7:
                 if (self.mainController.view.ssMinX >= 0 && self.mainController.view.ssMinX <= self.leftViewWidth) {
                     CGFloat scale = 1 - self.mainController.view.ssMinX / self.leftViewWidth * (1.0 - self.animation7Scale);
@@ -379,6 +391,7 @@
                 //================= Animation
                 switch (self.animationType) {
                     case CLSideSlideShowViewAnimationScaleBig:
+                    case CLSideSlideShowViewAnimationScaleSmall:
                         self.leftViewController.view.transform = CGAffineTransformMakeScale(1.0, 1.0);
                         break;
                     case CLSideSlideShowViewAnimationFor7:
@@ -410,6 +423,7 @@
                 //=================
                 switch (self.animationType) {
                     case CLSideSlideShowViewAnimationScaleBig:
+                    case CLSideSlideShowViewAnimationScaleSmall:
                         self.rightViewController.view.transform = CGAffineTransformMakeScale(1.0, 1.0);
                         break;
                     case CLSideSlideShowViewAnimationFor7:
@@ -658,7 +672,8 @@
         
     }else if ([keyPath isEqualToString:@"animationType"]) {
         //=================
-        if (self.animationType == CLSideSlideShowViewAnimationScaleBig) {
+        if (self.animationType == CLSideSlideShowViewAnimationScaleBig ||
+            self.animationType == CLSideSlideShowViewAnimationScaleSmall) {
             self.showLeftViewShadow = YES;
             self.showRightViewShadow = YES;
         }else {
@@ -815,10 +830,10 @@
                 [self animationNormal:isLeft isShow:isShow];
                 break;
             case 1:
-                [self animationSacleBig:isLeft isShow:isShow];
+                [self animationSacle:isLeft isShow:isShow];
                 break;
             case 2:
-                [self animationSacleSmall:isLeft isShow:isShow];
+                [self animationSacle:isLeft isShow:isShow];
                 break;
             case 3:
                 [self animationDithering:isLeft isShow:isShow];
@@ -963,19 +978,20 @@
     }];
 }
 
-- (void)animationSacleBig:(BOOL)isLeft isShow:(BOOL)isShow
+- (void)animationSacle:(BOOL)isLeft isShow:(BOOL)isShow
 {
     //=================
     UIView *view = isLeft ? self.leftViewController.view : self.rightViewController.view;
+    CGFloat changeScale = self.animationType == CLSideSlideShowViewAnimationScaleBig ? 0.88 : 1.12;
     
     //=================
     if (isShow)
-        view.transform = CGAffineTransformMakeScale(0.88, 0.88);
+        view.transform = CGAffineTransformMakeScale(changeScale, changeScale);
     
     //=================
     [UIView animateWithDuration:0.15 animations:^{
         //=================
-        CGFloat scale = isShow ? 1.0 : 0.88;
+        CGFloat scale = isShow ? 1.0 : changeScale;
         view.transform = CGAffineTransformMakeScale(scale, scale);
         
         //=================
@@ -1007,11 +1023,6 @@
         
         [self finishIsLeft:isLeft isShow:isShow];
     }];
-}
-
-- (void)animationSacleSmall:(BOOL)isLeft isShow:(BOOL)isShow
-{
-    
 }
 
 - (void)animationDithering:(BOOL)isLeft isShow:(BOOL)isShow
