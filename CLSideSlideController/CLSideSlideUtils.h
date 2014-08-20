@@ -32,16 +32,21 @@
 @interface UIView(CLSideSlid)
 
 @property (nonatomic) CGFloat ssMinX;
-
 @property (nonatomic) CGFloat ssMinY;
 
 @property (nonatomic) CGFloat ssMaxX;
-
 @property (nonatomic) CGFloat ssMaxY;
 
 @property (nonatomic) CGFloat ssWidth;
-
 @property (nonatomic) CGFloat ssHeight;
 
+@property (nonatomic) CGFloat ssCenterX;
+@property (nonatomic) CGFloat ssCenterY;
+
+@property (nonatomic) CGFloat ssMoveMinX;
+@property (nonatomic) CGFloat ssMoveMinY;
+
+@property (nonatomic) CGFloat ssMoveMaxX;
+@property (nonatomic) CGFloat ssMoveMaxY;
 
 @end

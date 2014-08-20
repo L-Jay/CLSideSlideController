@@ -109,5 +109,65 @@ static char const * const animationChar = "animation";
 	self.frame = frame;
 }
 
+- (CGFloat)ssCenterX
+{
+	return self.center.x;
+}
+
+- (void)setSsCenterX:(CGFloat)centerX
+{
+	self.center = CGPointMake(centerX, self.center.y);
+}
+
+- (CGFloat)ssCenterY
+{
+	return self.center.y;
+}
+
+- (void)setSsCenterY:(CGFloat)ssCenterY
+{
+	self.center = CGPointMake(self.center.x, ssCenterY);
+}
+
+- (CGFloat)ssMoveMinX
+{
+    return 0;
+}
+
+- (void)setSsMoveMinX:(CGFloat)ssMoveMinX
+{
+    self.ssCenterX += ssMoveMinX-self.ssMinX;
+}
+
+- (CGFloat)ssMoveMinY
+{
+    return 0;
+}
+
+- (void)setSsMoveMinY:(CGFloat)ssMoveMinY
+{
+    self.ssCenterY += ssMoveMinY-self.ssMinY;
+}
+
+- (CGFloat)ssMoveMaxX
+{
+    return 0;
+}
+
+- (void)setSsMoveMaxX:(CGFloat)ssMoveMaxX
+{
+    self.ssCenterX += ssMoveMaxX-self.ssMaxX;
+}
+
+- (CGFloat)ssMoveMaxY
+{
+    return 0;
+}
+
+- (void)setSsMoveMaxY:(CGFloat)ssMoveMaxY
+{
+    self.ssCenterY += ssMoveMaxY-self.ssMaxY;
+}
+
 @end
 

@@ -10,7 +10,8 @@
 
 typedef enum{
     CLSideSlideShowViewAnimationNormal = 0, //普通
-    CLSideSlideShowViewAnimationScale,      //副视图缩放
+    CLSideSlideShowViewAnimationScaleBig,   //副视图缩放变大
+    CLSideSlideShowViewAnimationScaleSmall, //副视图缩放变小
     CLSideSlideShowViewAnimationDithering,  //抖动
     CLSideSlideShowViewAnimationPucker,     //折叠
     CLSideSlideShowViewAnimationFor7,       //主视图缩放

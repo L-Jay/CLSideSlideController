@@ -209,7 +209,7 @@
             
             //=================
             switch (self.animationType) {
-                case CLSideSlideShowViewAnimationScale: {
+                case CLSideSlideShowViewAnimationScaleBig: {
                     
                     if (self.scrollContinuous) {
                         [self.view insertSubview:self.leftViewController.view belowSubview:self.mainController.view];
@@ -314,7 +314,7 @@
         
         //================= Animation
         switch (self.animationType) {
-            case CLSideSlideShowViewAnimationScale: {
+            case CLSideSlideShowViewAnimationScaleBig: {
                 if (self.mainController.view.ssMinX >= 0 && self.mainController.view.ssMinX <= self.leftViewWidth) {
                     CGFloat scale = 0.88 + self.mainController.view.ssMinX / self.leftViewWidth * 0.12;
                     self.leftViewController.view.transform = CGAffineTransformMakeScale(scale, scale);
@@ -378,7 +378,7 @@
                 
                 //================= Animation
                 switch (self.animationType) {
-                    case CLSideSlideShowViewAnimationScale:
+                    case CLSideSlideShowViewAnimationScaleBig:
                         self.leftViewController.view.transform = CGAffineTransformMakeScale(1.0, 1.0);
                         break;
                     case CLSideSlideShowViewAnimationFor7:
@@ -409,7 +409,7 @@
             [UIView animateWithDuration:0.2 animations:^{
                 //=================
                 switch (self.animationType) {
-                    case CLSideSlideShowViewAnimationScale:
+                    case CLSideSlideShowViewAnimationScaleBig:
                         self.rightViewController.view.transform = CGAffineTransformMakeScale(1.0, 1.0);
                         break;
                     case CLSideSlideShowViewAnimationFor7:
@@ -440,7 +440,7 @@
             [UIView animateWithDuration:0.2 animations:^{
                 //=================
                 switch (self.animationType) {
-                    case CLSideSlideShowViewAnimationScale:
+                    case CLSideSlideShowViewAnimationScaleBig:
                         self.leftViewController.view.transform = CGAffineTransformMakeScale(0.88, 0.88);
                         self.rightViewController.view.transform = CGAffineTransformMakeScale(0.88, 0.88);
                         break;
@@ -476,7 +476,7 @@
                 _isShowRightView = NO;
                 
                 switch (self.animationType) {
-                    case CLSideSlideShowViewAnimationScale:
+                    case CLSideSlideShowViewAnimationScaleBig:
                         self.leftViewController.view.transform = CGAffineTransformMakeScale(1.0, 1.0);
                         self.rightViewController.view.transform = CGAffineTransformMakeScale(1.0, 1.0);
                         break;
@@ -658,7 +658,7 @@
         
     }else if ([keyPath isEqualToString:@"animationType"]) {
         //=================
-        if (self.animationType == CLSideSlideShowViewAnimationScale) {
+        if (self.animationType == CLSideSlideShowViewAnimationScaleBig) {
             self.showLeftViewShadow = YES;
             self.showRightViewShadow = YES;
         }else {
@@ -812,74 +812,28 @@
     if (animation) {
         switch (self.animationType) {
             case 0:
-                [UIView animateWithDuration:0.2 animations:^{
-                    if (isShow) {
-                        self.mainController.view.ssMinX = isLeft ? self.leftViewWidth : -self.rightViewWidth;
-                        
-                        //=================
-                        self.mainViewMask.alpha = 1.0;
-                        
-                        if (isLeft)
-                            self.leftViewMask.alpha = 0;
-                        else
-                            self.rightViewMask.alpha = 0;
-                    }
-                    else {
-                        //=================
-                        self.mainController.view.ssMinX = 0;
-                        
-                        //=================
-                        self.mainViewMask.alpha = 0;
-                        
-                        self.leftViewMask.alpha = 1.0;
-                        self.rightViewMask.alpha = 1.0;
-                    }
-                } completion:^(BOOL finish){
-                    [self finishIsLeft:isLeft isShow:isShow];
-                }];
+                [self animationNormal:isLeft isShow:isShow];
                 break;
             case 1:
-                [self animationSacle:isLeft isShow:isShow];
+                [self animationSacleBig:isLeft isShow:isShow];
                 break;
             case 2:
-                [self animationDithering:isLeft isShow:isShow];
+                [self animationSacleSmall:isLeft isShow:isShow];
                 break;
             case 3:
-                [self animationPucker:isLeft isShow:isShow];
+                [self animationDithering:isLeft isShow:isShow];
                 break;
             case 4:
-                [self animationFor7:isLeft isShow:isShow];
+                [self animationPucker:isLeft isShow:isShow];
                 break;
             case 5:
+                [self animationFor7:isLeft isShow:isShow];
+                break;
+            case 6:
                 [self animationParallax:isLeft isShow:isShow];
                 break;
             default:
-                [UIView animateWithDuration:0.2 animations:^{
-                    if (isShow) {
-                        //=================
-                        self.mainController.view.ssMinX = isLeft ? self.leftViewWidth : -self.rightViewWidth;
-                        
-                        //=================
-                        self.mainViewMask.alpha = 1.0;
-                        
-                        if (isLeft)
-                            self.leftViewMask.alpha = 0;
-                        else
-                            self.rightViewMask.alpha = 0;
-                    }
-                    else {
-                        //=================
-                        self.mainController.view.ssMinX = 0;
-                        
-                        //=================
-                        self.mainViewMask.alpha = 0;
-                        
-                        self.leftViewMask.alpha = 1.0;
-                        self.rightViewMask.alpha = 1.0;
-                    }
-                } completion:^(BOOL finish){
-                    [self finishIsLeft:isLeft isShow:isShow];
-                }];
+                [self animationNormal:isLeft isShow:isShow];
                 break;
         }
     }else {
@@ -979,7 +933,37 @@
 }
 
 #pragma mark - Animation Mehotds
-- (void)animationSacle:(BOOL)isLeft isShow:(BOOL)isShow
+- (void)animationNormal:(BOOL)isLeft isShow:(BOOL)isShow
+{
+    [UIView animateWithDuration:0.2 animations:^{
+        if (isShow) {
+            //=================
+            self.mainController.view.ssMoveMinX = isLeft ? self.leftViewWidth : -self.rightViewWidth;
+            
+            //=================
+            self.mainViewMask.alpha = 1.0;
+            
+            if (isLeft)
+                self.leftViewMask.alpha = 0;
+            else
+                self.rightViewMask.alpha = 0;
+        }
+        else {
+            //=================
+            self.mainController.view.ssMoveMinX = 0;
+            
+            //=================
+            self.mainViewMask.alpha = 0;
+            
+            self.leftViewMask.alpha = 1.0;
+            self.rightViewMask.alpha = 1.0;
+        }
+    } completion:^(BOOL finish){
+        [self finishIsLeft:isLeft isShow:isShow];
+    }];
+}
+
+- (void)animationSacleBig:(BOOL)isLeft isShow:(BOOL)isShow
 {
     //=================
     UIView *view = isLeft ? self.leftViewController.view : self.rightViewController.view;
@@ -997,7 +981,7 @@
         //=================
         if (isShow) {
             //=================
-            self.mainController.view.ssMinX = isLeft ? self.leftViewWidth : -self.rightViewWidth;
+            self.mainController.view.ssMoveMinX = isLeft ? self.leftViewWidth : -self.rightViewWidth;
             
             //=================
             self.mainViewMask.alpha = 1.0;
@@ -1009,7 +993,7 @@
         }
         else {
             //=================
-            self.mainController.view.ssMinX = 0;
+            self.mainController.view.ssMoveMinX = 0;
          
             //=================
             self.mainViewMask.alpha = 0;
@@ -1025,11 +1009,16 @@
     }];
 }
 
+- (void)animationSacleSmall:(BOOL)isLeft isShow:(BOOL)isShow
+{
+    
+}
+
 - (void)animationDithering:(BOOL)isLeft isShow:(BOOL)isShow
 {
     CGFloat duratoin1 = isShow ? 0.1 : 0.15;
     [UIView animateWithDuration:duratoin1 animations:^{
-        self.mainController.view.ssMinX = isLeft ? self.leftViewWidth + 20 : -self.rightViewWidth - 20;
+        self.mainController.view.ssMoveMinX = isLeft ? self.leftViewWidth + 20 : -self.rightViewWidth - 20;
         
         self.mainViewMask.alpha = isShow ? 1.0 : 0;
         
@@ -1048,10 +1037,10 @@
         CGFloat duratoin2 = isShow ? 0.1 : 0;
         [UIView animateWithDuration:duratoin2 animations:^{
             if (isShow)
-                self.mainController.view.ssMinX = isLeft ? self.leftViewWidth - 10 : -self.rightViewWidth + 10;
+                self.mainController.view.ssMoveMinX = isLeft ? self.leftViewWidth - 10 : -self.rightViewWidth + 10;
         }completion:^(BOOL finish){
             [UIView animateWithDuration:0.1 animations:^{
-                self.mainController.view.ssMinX = isShow ? (isLeft ? self.leftViewWidth : -self.rightViewWidth) : 0;
+                self.mainController.view.ssMoveMinX = isShow ? (isLeft ? self.leftViewWidth : -self.rightViewWidth) : 0;
             }completion:^(BOOL finish){
                 [self finishIsLeft:isLeft isShow:isShow];
             }];
@@ -1072,9 +1061,9 @@
         
         if (isShow) {
             if (isLeft)
-                self.mainController.view.ssMinX = self.leftViewWidth;
+                self.mainController.view.ssMoveMinX = self.leftViewWidth;
             else
-                self.mainController.view.ssMaxX = self.view.ssWidth - self.rightViewWidth;
+                self.mainController.view.ssMoveMaxX = self.view.ssWidth - self.rightViewWidth;
             
             
             self.mainViewMask.alpha = 1.0;
@@ -1085,7 +1074,7 @@
                 self.rightViewMask.alpha = 0;
             
         }else {
-            self.mainController.view.ssMinX = 0;
+            self.mainController.view.ssMoveMinX = 0;
             
             self.mainViewMask.alpha = 0;
             
@@ -1105,20 +1094,20 @@
     //=================
     if (isShow) {
         if (isLeft)
-            view.ssMinX = -ParallaxDis;
+            view.ssMoveMinX = -ParallaxDis;
         else
-            view.ssMaxX = self.view.ssWidth + ParallaxDis;
+            view.ssMoveMaxX = self.view.ssWidth + ParallaxDis;
     }
     
     //=================
     [UIView animateWithDuration:0.2 animations:^{
         if (isLeft) {
-            view.ssMinX = isShow ? 0 : -ParallaxDis;
-            self.mainController.view.ssMinX = isShow ? self.leftViewWidth : 0;
+            view.ssMoveMinX = isShow ? 0 : -ParallaxDis;
+            self.mainController.view.ssMoveMinX = isShow ? self.leftViewWidth : 0;
         }
         else {
-            view.ssMaxX = isShow ? self.view.ssWidth : self.view.ssWidth + ParallaxDis;
-            self.mainController.view.ssMinX = isShow ? -self.rightViewWidth : 0;
+            view.ssMoveMaxX = isShow ? self.view.ssWidth : self.view.ssWidth + ParallaxDis;
+            self.mainController.view.ssMoveMinX = isShow ? -self.rightViewWidth : 0;
         }
         
         //=================
@@ -1138,7 +1127,7 @@
         }
         
     }completion:^(BOOL finish){
-        view.ssMinX = 0;
+        view.ssMoveMinX = 0;
         [self finishIsLeft:isLeft isShow:isShow];
     }];
 }
