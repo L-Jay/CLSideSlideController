@@ -15,6 +15,7 @@ typedef enum{
     CLSideSlideShowViewAnimationDithering,  //抖动
     CLSideSlideShowViewAnimationPucker,     //折叠
     CLSideSlideShowViewAnimationFor7,       //主视图缩放
+    CLSideSlideShowViewAnimationFor7Scale,  //主、副视图缩放
     CLSideSlideShowViewAnimationParallax,   //视差
 }CLSideSlideShowViewAnimation;
 

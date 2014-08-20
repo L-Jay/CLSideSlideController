@@ -211,6 +211,7 @@
             switch (self.animationType) {
                 case CLSideSlideShowViewAnimationScaleBig:
                 case CLSideSlideShowViewAnimationScaleSmall:
+                case CLSideSlideShowViewAnimationFor7Scale:
                 {
                     if (self.scrollContinuous) {
                         [self.view insertSubview:self.leftViewController.view belowSubview:self.mainController.view];
@@ -219,7 +220,14 @@
                         [self.view insertSubview:tempView belowSubview:self.mainController.view];
                     }
                     
-                    CGFloat scale = self.animationType == CLSideSlideShowViewAnimationScaleBig ? 0.88 : 1.12;
+                    CGFloat scale = 0;
+                    if (self.animationType == CLSideSlideShowViewAnimationScaleBig)
+                        scale = 0.88;
+                    else if (self.animationType == CLSideSlideShowViewAnimationScaleSmall)
+                        scale = 1.12;
+                    else
+                        scale = 1.2;
+                    
                     tempView.transform = CGAffineTransformMakeScale(scale, scale);
                 }
                     break;
@@ -290,7 +298,7 @@
             
             //================== Continuous
             if (self.scrollContinuous) {
-                if (self.animationType == CLSideSlideShowViewAnimationFor7 && self.mainController.view.ssMaxX < self.view.ssWidth)
+                if ((self.animationType == CLSideSlideShowViewAnimationFor7 || self.animationType == CLSideSlideShowViewAnimationFor7Scale) && self.mainController.view.ssMaxX < self.view.ssWidth)
                     self.mainController.view.ssMoveMaxX = self.view.ssWidth + moveDistance;
                 else
                     self.mainController.view.ssMoveMinX = moveDistance;
@@ -337,12 +345,25 @@
             }
                 break;
             case CLSideSlideShowViewAnimationFor7:
+            case CLSideSlideShowViewAnimationFor7Scale:
                 if (self.mainController.view.ssMinX >= 0 && self.mainController.view.ssMinX <= self.leftViewWidth) {
                     CGFloat scale = 1 - self.mainController.view.ssMinX / self.leftViewWidth * (1.0 - self.animation7Scale);
                     self.mainController.view.transform = CGAffineTransformMakeScale(scale, scale);
+                    
+                    //==============
+                    if (self.animationType == CLSideSlideShowViewAnimationFor7Scale) {
+                        CGFloat leftScale = 1.2 - self.mainController.view.ssMinX / self.leftViewWidth * 0.2;
+                        self.leftViewController.view.transform = CGAffineTransformMakeScale(leftScale, leftScale);
+                    }
                 }else if (self.mainController.view.ssMaxX >= self.view.ssWidth - self.rightViewWidth && self.mainController.view.ssMaxX <= self.view.ssWidth) {
                     CGFloat scale = 1 - (self.view.ssWidth - self.mainController.view.ssMaxX) / self.rightViewWidth * (1 - self.animation7Scale);
                     self.mainController.view.transform = CGAffineTransformMakeScale(scale, scale);
+                    
+                    //==============
+                    if (self.animationType == CLSideSlideShowViewAnimationFor7Scale) {
+                        CGFloat rightScale = 1.2 - (self.view.ssWidth - self.mainController.view.ssMaxX) / self.rightViewWidth *0.2;
+                        self.rightViewController.view.transform = CGAffineTransformMakeScale(rightScale, rightScale);
+                    }
                 }
                 break;
             case CLSideSlideShowViewAnimationParallax:
@@ -395,7 +416,13 @@
                         self.leftViewController.view.transform = CGAffineTransformMakeScale(1.0, 1.0);
                         break;
                     case CLSideSlideShowViewAnimationFor7:
+                    case CLSideSlideShowViewAnimationFor7Scale:
+                    {
                         self.mainController.view.transform = CGAffineTransformMakeScale(self.animation7Scale, self.animation7Scale);
+                        
+                        if (self.animationType == CLSideSlideShowViewAnimationFor7Scale)
+                            self.leftViewController.view.transform = CGAffineTransformMakeScale(1.0, 1.0);
+                    }
                         break;
                     case CLSideSlideShowViewAnimationParallax:
                         self.leftViewController.view.ssMoveMinX = 0;
@@ -427,7 +454,13 @@
                         self.rightViewController.view.transform = CGAffineTransformMakeScale(1.0, 1.0);
                         break;
                     case CLSideSlideShowViewAnimationFor7:
+                    case CLSideSlideShowViewAnimationFor7Scale:
+                    {
                         self.mainController.view.transform = CGAffineTransformMakeScale(self.animation7Scale, self.animation7Scale);
+                        
+                        if (self.animationType == CLSideSlideShowViewAnimationFor7Scale)
+                            self.rightViewController.view.transform = CGAffineTransformMakeScale(1.0, 1.0);
+                    }
                         break;
                     case CLSideSlideShowViewAnimationParallax:
                         self.rightViewController.view.ssMoveMaxX = self.view.ssWidth;
@@ -459,7 +492,13 @@
                         self.rightViewController.view.transform = CGAffineTransformMakeScale(0.88, 0.88);
                         break;
                     case CLSideSlideShowViewAnimationFor7:
+                    case CLSideSlideShowViewAnimationFor7Scale:
                         self.mainController.view.transform = CGAffineTransformMakeScale(1.0, 1.0);
+                        
+                        if (self.animationType == CLSideSlideShowViewAnimationFor7Scale) {
+                            self.leftViewController.view.transform = CGAffineTransformMakeScale(1.2, 1.2);
+                            self.rightViewController.view.transform = CGAffineTransformMakeScale(1.2, 0.88);
+                        }
                         break;
                     case CLSideSlideShowViewAnimationParallax:
                         self.leftViewController.view.ssMoveMinX = -ParallaxDis;
@@ -682,7 +721,8 @@
         }
         
         //=================
-        if (self.animationType == CLSideSlideShowViewAnimationFor7) {
+        if (self.animationType == CLSideSlideShowViewAnimationFor7 ||
+            self.animationType == CLSideSlideShowViewAnimationFor7Scale) {
             if (self.isShowLeftView || self.isShowRightView)
                 [UIView animateWithDuration:0.2 animations:^{
                    self.mainController.view.transform = CGAffineTransformMakeScale(self.animation7Scale, self.animation7Scale);
@@ -830,8 +870,6 @@
                 [self animationNormal:isLeft isShow:isShow];
                 break;
             case 1:
-                [self animationSacle:isLeft isShow:isShow];
-                break;
             case 2:
                 [self animationSacle:isLeft isShow:isShow];
                 break;
@@ -842,9 +880,10 @@
                 [self animationPucker:isLeft isShow:isShow];
                 break;
             case 5:
+            case 6:
                 [self animationFor7:isLeft isShow:isShow];
                 break;
-            case 6:
+            case 7:
                 [self animationParallax:isLeft isShow:isShow];
                 break;
             default:
@@ -1066,6 +1105,13 @@
 
 - (void)animationFor7:(BOOL)isLeft isShow:(BOOL)isShow
 {
+    UIView *view = isLeft ? self.leftViewController.view : self.rightViewController.view;
+    
+    //=================
+    if (isShow && self.animationType == CLSideSlideShowViewAnimationFor7Scale)
+        view.transform = CGAffineTransformMakeScale(1.2, 1.2);
+    
+    //=================
     [UIView animateWithDuration:0.15 animations:^{
         CGFloat scale = isShow ? self.animation7Scale : 1.0;
         self.mainController.view.transform = CGAffineTransformMakeScale(scale, scale);
@@ -1084,6 +1130,10 @@
             else
                 self.rightViewMask.alpha = 0;
             
+            //=================
+            if (self.animationType == CLSideSlideShowViewAnimationFor7Scale)
+                view.transform = CGAffineTransformMakeScale(1.0, 1.0);
+            
         }else {
             self.mainController.view.ssMoveMinX = 0;
             
@@ -1091,8 +1141,16 @@
             
             self.leftViewMask.alpha = 1.0;
             self.rightViewMask.alpha = 1.0;
+            
+            //=================
+            if (self.animationType == CLSideSlideShowViewAnimationFor7Scale)
+                view.transform = CGAffineTransformMakeScale(1.2, 1.2);
         }
     }completion:^(BOOL finish){
+        //=================
+        if (self.animationType == CLSideSlideShowViewAnimationFor7Scale)
+            view.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        
         [self finishIsLeft:isLeft isShow:isShow];
     }];
 }
@@ -1245,7 +1303,8 @@
 
 - (void)resizeMainView
 {
-    if (self.animationType == CLSideSlideShowViewAnimationFor7) {
+    if (self.animationType == CLSideSlideShowViewAnimationFor7 ||
+        self.animationType == CLSideSlideShowViewAnimationFor7Scale) {
         if (self.mainController.view.ssWidth != self.view.ssWidth)
             self.mainController.view.ssWidth = self.view.ssWidth;
         
