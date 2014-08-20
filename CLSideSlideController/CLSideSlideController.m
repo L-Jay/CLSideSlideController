@@ -895,6 +895,10 @@
             else
                 self.rightViewMask.alpha = 0;
             
+            //=================
+            if ([self.delegate respondsToSelector:@selector(sideSlideController:didShowLeftViewController:)])
+                [self.delegate sideSlideController:self didShowLeftViewController:isLeft];
+            
         }else {
             //=================
             self.mainController.view.transform = CGAffineTransformMakeScale(1.0, 1.0);
@@ -912,6 +916,13 @@
             
             //=================
             isLeft ? [self.leftViewController.view removeFromSuperview] : [self.rightViewController.view removeFromSuperview];
+            
+            //=================
+            if ([self.delegate respondsToSelector:@selector(sideSlideController:didHideLeftViewController:)])
+                [self.delegate sideSlideController:self didHideLeftViewController:isLeft];
+            
+            if ([self.delegate respondsToSelector:@selector(didShowRootViewControllerForSideSlideController:)])
+                [self.delegate didShowRootViewControllerForSideSlideController:self];
         }
         
         //=================
@@ -1384,7 +1395,7 @@ static char const * const ssController = "ssController";
     UIBarButtonItem *item = (UIBarButtonItem *)sender;
     
     if (self.sideSlideController.isShowRightView)
-        [self.sideSlideController hideRightViewWithAnimation:YES];
+        [self.sideSlideController hideRightViewWithAnimation:item.animation];
     else
         [self.sideSlideController showRightViewWithAnimation:item.animation];
 }

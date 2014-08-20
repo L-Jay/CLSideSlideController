@@ -35,8 +35,8 @@
     FirstViewController *first = [[FirstViewController alloc] init];
     first.navigationItem.leftBarButtonItem = BARBUTTON(@"left", nil);
     first.navigationItem.rightBarButtonItem = BARBUTTON(@"right", nil);
-    [first setLeftBarItemShowLeftView:YES];
-    [first setRightBarItemShowRightView:YES];
+    [first setLeftBarItemShowLeftView:NO];
+    [first setRightBarItemShowRightView:NO];
     UINavigationController *firstNav = [[UINavigationController alloc] initWithRootViewController:first];
     [array addObject:firstNav];
     [first release];
@@ -45,8 +45,8 @@
     SecondTableViewController *second = [[SecondTableViewController alloc] init];
     second.navigationItem.leftBarButtonItem = BARBUTTON(@"left", nil);
     second.navigationItem.rightBarButtonItem = BARBUTTON(@"right", nil);
-    [second setLeftBarItemShowLeftView:YES];
-    [second setRightBarItemShowRightView:YES];
+    [second setLeftBarItemShowLeftView:NO];
+    [second setRightBarItemShowRightView:NO];
     UINavigationController *secondNav = [[UINavigationController alloc] initWithRootViewController:second];
     [array addObject:secondNav];
     [second release];
@@ -131,9 +131,9 @@
     //    tabbar.leftViewFillScreen = NO;
     //    tabbar.rightViewFillScreen = NO;
     
-    //    tabbar.animationType = SideSlidShowViewAnimationScale;
-    tabbar.animationType = CLSideSlideShowViewAnimationFor7;
-    //    tabbar.animationType = SideSlidShowViewAnimationParallax;
+    //tabbar.animationType = SideSlidShowViewAnimationScale;
+    //tabbar.animationType = CLSideSlideShowViewAnimationFor7;
+    //tabbar.animationType = SideSlidShowViewAnimationParallax;
     
     //    tabbar.showMianViewShadow = NO;
     tabbar.showLeftViewShadow = YES;
