@@ -628,7 +628,9 @@
                 tempNav.view.frame = self.view.bounds;
             }else
                 self.leftViewController.view.frame = self.view.bounds;
-        }
+        }else
+            if ([self.leftViewController isKindOfClass:[UITableViewController class]])
+                self.leftViewController.view.frame = self.view.bounds;
         
         //=================
         if (self.leftViewController)
@@ -663,7 +665,9 @@
                 tempNav.view.frame = self.view.bounds;
             }else
                 self.rightViewController.view.frame = self.view.bounds;
-        }
+        }else
+            if ([self.rightViewController isKindOfClass:[UITableViewController class]])
+                self.rightViewController.view.frame = self.view.bounds;
         
         //=================
         if (self.rightViewController)
