@@ -334,7 +334,13 @@
                 }else if (self.mainController.view.ssMaxX >= self.view.ssWidth - self.rightViewWidth && self.mainController.view.ssMaxX <= self.view.ssWidth) {
                     CGFloat scale = 0.88 + (self.view.ssWidth - self.mainController.view.ssMaxX) / self.rightViewWidth *0.12;
                     self.rightViewController.view.transform = CGAffineTransformMakeScale(scale, scale);
+                }else {
+                    if (self.mainController.view.ssMinX > 0)
+                        self.leftViewController.view.transform = CGAffineTransformMakeScale(1.0, 1.0);
+                    else if (self.mainController.view.ssMinX < 0)
+                        self.rightViewController.view.transform = CGAffineTransformMakeScale(1.0, 1.0);
                 }
+                    
             }
                 break;
             case CLSideSlideShowViewAnimationScaleSmall: {
@@ -344,6 +350,11 @@
                 }else if (self.mainController.view.ssMaxX >= self.view.ssWidth - self.rightViewWidth && self.mainController.view.ssMaxX <= self.view.ssWidth) {
                     CGFloat scale = 1.12 - (self.view.ssWidth - self.mainController.view.ssMaxX) / self.rightViewWidth *0.12;
                     self.rightViewController.view.transform = CGAffineTransformMakeScale(scale, scale);
+                }else {
+                    if (self.mainController.view.ssMinX > 0)
+                        self.leftViewController.view.transform = CGAffineTransformMakeScale(1.0, 1.0);
+                    else if (self.mainController.view.ssMinX < 0)
+                        self.rightViewController.view.transform = CGAffineTransformMakeScale(1.0, 1.0);
                 }
             }
                 break;
@@ -379,6 +390,24 @@
                         CGFloat currentMaxX = ParallaxDis - (self.view.ssWidth - self.mainController.view.ssMaxX) / self.rightViewWidth * ParallaxDis + self.view.ssWidth;
                         self.rightViewController.view.ssMoveMaxX = currentMaxX;
                     }
+                }else {
+                    self.mainController.view.transform = CGAffineTransformMakeScale(self.animation7Scale, self.animation7Scale);
+                    
+                    if (self.animationType == CLSideSlideShowViewAnimationFor7ScaleBig) {
+                        if (self.mainController.view.ssMinX > 0) {
+                            self.leftViewController.view.ssMoveMinX = 0;
+                            self.leftViewController.view.transform = CGAffineTransformMakeScale(1.0, 1.0);
+                        }
+                        else if (self.mainController.view.ssMinX < 0) {
+                            self.rightViewController.view.ssMoveMinX = 0;
+                            self.rightViewController.view.transform = CGAffineTransformMakeScale(1.0, 1.0);
+                        }
+                    }else if (self.animationType == CLSideSlideShowViewAnimationFor7ScaleSmall) {
+                        if (self.mainController.view.ssMinX > 0)
+                            self.leftViewController.view.transform = CGAffineTransformMakeScale(1.0, 1.0);
+                        else if (self.mainController.view.ssMinX < 0)
+                            self.rightViewController.view.transform = CGAffineTransformMakeScale(1.0, 1.0);
+                    }
                 }
                 break;
             case CLSideSlideShowViewAnimationParallax:
@@ -388,6 +417,11 @@
                 }else if (self.mainController.view.ssMaxX >= self.view.ssWidth - self.rightViewWidth && self.mainController.view.ssMaxX <= self.view.ssWidth) {
                     CGFloat currentMaxX = ParallaxDis - (self.view.ssWidth - self.mainController.view.ssMaxX) / self.rightViewWidth * ParallaxDis + self.view.ssWidth;
                     self.rightViewController.view.ssMoveMaxX = currentMaxX;
+                }else {
+                    if (self.mainController.view.ssMinX > 0)
+                        self.leftViewController.view.ssMoveMinX = 0;
+                    else if (self.mainController.view.ssMinX < 0)
+                        self.rightViewController.view.ssMoveMinX = 0;
                 }
                 break;
             default:

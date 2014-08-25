@@ -144,7 +144,7 @@
     tabbar.showLeftViewShadow = YES;
     tabbar.showRightViewShadow = YES;
     
-    //    tabbar.scrollContinuous = NO;
+    tabbar.scrollContinuous = NO;
     
     //    tabbar.canTouchWhenShow = NO;
     
