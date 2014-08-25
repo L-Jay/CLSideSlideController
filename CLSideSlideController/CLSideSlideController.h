@@ -9,14 +9,15 @@
 #import <UIKit/UIKit.h>
 
 typedef enum{
-    CLSideSlideShowViewAnimationNormal = 0, //普通
-    CLSideSlideShowViewAnimationScaleBig,   //副视图缩放变大
-    CLSideSlideShowViewAnimationScaleSmall, //副视图缩放变小
-    CLSideSlideShowViewAnimationDithering,  //抖动
-    CLSideSlideShowViewAnimationPucker,     //折叠
-    CLSideSlideShowViewAnimationFor7,       //主视图缩放
-    CLSideSlideShowViewAnimationFor7Scale,  //主、副视图缩放
-    CLSideSlideShowViewAnimationParallax,   //视差
+    CLSideSlideShowViewAnimationNormal = 0,      //普通
+    CLSideSlideShowViewAnimationScaleBig,        //副视图放大
+    CLSideSlideShowViewAnimationScaleSmall,      //副视图缩小
+    CLSideSlideShowViewAnimationDithering,       //抖动
+    CLSideSlideShowViewAnimationPucker,          //折叠
+    CLSideSlideShowViewAnimationFor7,            //主视图缩放
+    CLSideSlideShowViewAnimationFor7ScaleBig,    //主视图缩小、副视图放大
+    CLSideSlideShowViewAnimationFor7ScaleSmall,  //主、副视图缩放
+    CLSideSlideShowViewAnimationParallax,        //视差
 }CLSideSlideShowViewAnimation;
 
 @protocol CLSideSlideViewControllerDelegate;
