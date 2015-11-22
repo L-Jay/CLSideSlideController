@@ -20,6 +20,7 @@
     [super viewDidLoad];
 	
     self.navigationItem.leftBarButtonItem = BARBUTTON(@"back", @selector(goBack));
+    self.view.backgroundColor = [UIColor blueColor];
     
     UIButton *v1 = [[UIButton alloc] initWithFrame: CGRectMake(260, 90, 60, 60)];
     v1.backgroundColor = [UIColor blackColor];
@@ -29,6 +30,7 @@
 
 - (void)goBack
 {
+    NSLog(@"ing %@", self.presentingViewController);
     NSLog(@"-=-=-=-=-=%@", self.sideSlideController);
     
     [self dismissViewControllerAnimated:YES completion:^{

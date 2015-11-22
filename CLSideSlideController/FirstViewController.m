@@ -1,5 +1,6 @@
 
 #import "FirstViewController.h"
+#import "NextViewController.h"
 
 @interface FirstViewController ()
 
@@ -41,7 +42,7 @@
 
 - (void)test
 {
-    [self.sideSlideController rotateScaleMainView];
+//    [self.sideSlideController rotateScaleMainView];
     //self.sideSlidController.animationType = SideSlidShowViewAnimationScale;
     
 //    UIView *v = [[UIView alloc] initWithFrame:self.view.bounds];
@@ -62,6 +63,14 @@
 //        
 //    }];
 //    [cont release];
+    
+    NextViewController *next = [[NextViewController alloc] init];
+    [self.sideSlideController presentViewController:next animated:YES completion:^{
+        NSLog(@"ed %@", self.sideSlideController.presentedViewController);
+        NSLog(@"ing %@", self.sideSlideController.presentingViewController);
+        NSLog(@" %@", self.sideSlideController.parentViewController);
+    }];
+    [next release];
 }
 
 - (void)test2

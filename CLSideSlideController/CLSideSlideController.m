@@ -42,6 +42,25 @@
 #pragma mark - dealloc
 - (void)dealloc
 {
+    if ([self observationInfo]) {
+        [self removeObserver:self forKeyPath:@"viewControllers"];
+        [self removeObserver:self forKeyPath:@"leftViewController"];
+        [self removeObserver:self forKeyPath:@"rightViewController"];
+        [self removeObserver:self forKeyPath:@"showMianViewShadow"];
+        [self removeObserver:self forKeyPath:@"showLeftViewShadow"];
+        [self removeObserver:self forKeyPath:@"showRightViewShadow"];
+        [self removeObserver:self forKeyPath:@"animationType"];
+        [self removeObserver:self forKeyPath:@"leftViewFillScreen"];
+        [self removeObserver:self forKeyPath:@"rightViewFillScreen"];
+        [self removeObserver:self forKeyPath:@"canTouchWhenShow"];
+        [self removeObserver:self forKeyPath:@"showMainViewMask"];
+        [self removeObserver:self forKeyPath:@"showLeftViewMask"];
+        [self removeObserver:self forKeyPath:@"showRightViewMask"];
+        [self removeObserver:self forKeyPath:@"backgroundImage"];
+        [self removeObserver:self forKeyPath:@"statusStyle"];
+        [self removeObserver:self forKeyPath:@"animation7Scale"];
+    }
+    
     SSRELEASE(_backgroundImage);
     
     SSRELEASE(_backgroundImageView);
@@ -138,8 +157,8 @@
         [panGesture release];
         
         //============== InitData
-        self.leftViewWidth = 280;
-        self.rightViewWidth = 280;
+        self.leftViewWidth = self.view.ssWidth-40;
+        self.rightViewWidth = self.leftViewWidth;
         
         self.animationType = CLSideSlideShowViewAnimationNormal;
         self.animation7Scale = 0.8;
@@ -452,12 +471,6 @@
             
             //=================
             [UIView animateWithDuration:0.2 animations:^{
-                self.mainController.view.ssMoveMinX = self.leftViewWidth;
-                
-                self.mainViewMask.alpha = 1.0;
-                
-                self.leftViewMask.alpha = 0;
-                
                 //================= Animation
                 switch (self.animationType) {
                     case CLSideSlideShowViewAnimationScaleBig:
@@ -484,6 +497,13 @@
                     default:
                         break;
                 }
+                
+                self.mainController.view.ssMoveMinX = self.leftViewWidth;
+                
+                self.mainViewMask.alpha = 1.0;
+                
+                self.leftViewMask.alpha = 0;
+                
             }completion:^(BOOL finish){
                 _isShowLeftView = YES;
                 _isShowRightView = NO;
@@ -697,6 +717,8 @@
         self.mainController.viewControllers = self.viewControllers;
         
     }else if ([keyPath isEqualToString:@"leftViewController"]) {
+        [self setSideSlideControllerForViewController:self.leftViewController];
+        
         //=================
         if (!IOS7AndMore) {
             if ([self.leftViewController isKindOfClass:[UINavigationController class]]) {
@@ -731,9 +753,9 @@
         
         [self addChildViewController:self.leftViewController];
         
-        [self setSideSlideControllerForViewController:self.leftViewController];
-        
     }else if ([keyPath isEqualToString:@"rightViewController"]) {
+        [self setSideSlideControllerForViewController:self.rightViewController];
+        
         //=================
         if (!IOS7AndMore) {
             if ([self.rightViewController isKindOfClass:[UINavigationController class]]) {
@@ -769,8 +791,6 @@
             [self.rightViewController.view addSubview:self.rightViewMask];
         
         [self addChildViewController:self.rightViewController];
-        
-        [self setSideSlideControllerForViewController:self.rightViewController];
         
     }else if ([keyPath isEqualToString:@"showMianViewShadow"]) {
         //=================
@@ -1473,22 +1493,6 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    
-    [self removeObserver:self forKeyPath:@"viewControllers"];
-    [self removeObserver:self forKeyPath:@"leftViewController"];
-    [self removeObserver:self forKeyPath:@"rightViewController"];
-    [self removeObserver:self forKeyPath:@"showMianViewShadow"];
-    [self removeObserver:self forKeyPath:@"showLeftViewShadow"];
-    [self removeObserver:self forKeyPath:@"showRightViewShadow"];
-    [self removeObserver:self forKeyPath:@"animationType"];
-    [self removeObserver:self forKeyPath:@"leftViewFillScreen"];
-    [self removeObserver:self forKeyPath:@"rightViewFillScreen"];
-    [self removeObserver:self forKeyPath:@"canTouchWhenShow"];
-    [self removeObserver:self forKeyPath:@"showMainViewMask"];
-    [self removeObserver:self forKeyPath:@"showLeftViewMask"];
-    [self removeObserver:self forKeyPath:@"showRightViewMask"];
-    [self removeObserver:self forKeyPath:@"backgroundImage"];
-    [self removeObserver:self forKeyPath:@"statusStyle"];
 }
 
 - (void)viewWillAppear:(BOOL)animated
